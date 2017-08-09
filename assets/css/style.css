@@ -1,0 +1,30 @@
+body{
+	background-image: url(https://i.ytimg.com/vi/Awmr5V4ielI/maxresdefault.jpg);
+}
+
+
+h1 {
+	color: black;
+	font-size: 40px;
+    padding-left: 300px;
+    margin: 100px;
+    font-weight: bold;
+}
+
+p
+{
+	font-weight: bold;
+	padding-left: 600px;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+
+h3
+{
+	font-weight: bold;
+	padding-left: 590px;
+	font-weight: bold;
+	font-size: 20px;
+	padding-top: 40px;
+}
