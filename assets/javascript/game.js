@@ -1,60 +1,72 @@
+function hangman(word) {
+    var trys = 0;
+    var guess = 0;
 
-var words = [
-	"johnwilliams",
-	"michaelgiacchino"
-]
+    var alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var strBuilder = [];
+    $.each(alpha.split(''), function (i, val) {
+        strBuilder[strBuilder.length] = '<span class="guess">' + val + '</span>';
+    });
+   
 
+   
+    $('#alpha').html(strBuilder.join(''));
+    strBuilder = [];
+    $.each(word.split(''), function (i, val) {
+        strBuilder[strBuilder.length] = '<span class="letter" letter="' + val + '">-</span>';
+    });
+    
 
+   
+    $('#word').html(strBuilder.join(''));
 
-document.onkeyup = function(event) {
+   
+   
+    $('.guess').click(function () {
+        var count = $('#word [letter=' + $(this).text() + ']').each(function () {
+            $(this).text($(this).attr('letter'));
+        }).length;
+        $(this).removeClass('guess').css('color', (count > 0 ? 'green' : 'red')).unbind('click');
 
-
-	var guess = event.key;
-
-	var word = words[Math.floor(Math.random() * words.length)];
-
-	//answerarray
-	var answerArray = [];
-	for (var i = 0; i< word.length; i++) {
-		answerArray[i] = "_";
-	}
-
-	//var to keep track of letters
-	var remainingLetters = word.length;
-
-	// game loop
-	while (remainingLetters > 0) {
-		//player progress
-		var el = document.getElementById("game");
-		el.innerHTML = answerArray.join(" "); 
-
-
-		//player guess
-		var guess = prompt("Guess a letter or click Cancel to stop playing.");
-		
-		if(guess === null) {
-			break;
-		} else if (guess.length !== 1) {
-			alert("Please enter a single letter.");
-		
-		} else {
-			//update the game
-			for (var j = 0; j < word.length; j++) {
-				if (word[j] === guess) {
-					answerArray[j] = guess;
-					remainingLetters--; 
-				}
-
-			}
-		}
-
-	}
-		
+        if (count > 0) {
+            $('#win').text("Correct Guess");
+        } else if (count <= 0) {
+            trys++;
+            $('#win').text("You have tried to guess the word with no success " + trys + " times");
+        }
+        if ($("#word").text() === word) {
+            if (window.confirm("SUCCESS! Play again?")) {
+                newGame();
+                $("#win").text("");
+            }
+        }
+        if (trys == 6) {
+            alert("Guessed you have six times! May the Word be With You, To try or not to Try?");
+            $("#win").text("");
+            newGame(); 
+        }
+    });
 }
 
-		el.innerHTML = answerArray.join(" ");
-		alert("Great Job!!! The answer was " + word + ".");	
+function newGame() {
+    $("#win").text("");
+    var options = new Array("ANAKINSKYWALKER", "CHEWBACCA");
+    var random = 1 + Math.floor(Math.random() * 2);
+    hangman(options[random]);
+}
 
+$(document).ready(function () {
+    $('#but').click(newGame);
+});
+
+var audioElement = document.createElement("audio");
+audioElement.setAttribute("src", "assets/starwarsst.m4a");
+
+      // Theme Button
+
+$("but").on("click", function(){
+audioElement.play();
+});
 
 
 
