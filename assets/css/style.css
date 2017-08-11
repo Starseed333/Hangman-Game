@@ -31,16 +31,17 @@ p{
 }
 .guess:hover
 {
-    background-color: #eee;
+    background-color: grey;
     cursor: pointer;
 }
 
 #but
 {
-	color: grey;
+	color: white;
 	width: 60px;
 	border: 50px;
 	height: 35px;
+	background-color: black;
 
 
 }

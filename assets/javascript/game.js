@@ -50,8 +50,8 @@ function hangman(word) {
 
 function newGame() {
     $("#win").text("");
-    var options = new Array("ANAKINSKYWALKER", "CHEWBACCA");
-    var random = 1 + Math.floor(Math.random() * 2);
+    var options = new Array("ANAKINSKYWALKER", "CHEWBACCA", "JARJARBINKS");
+    var random = 0 + Math.floor(Math.random() * 3);
     hangman(options[random]);
 }
 
@@ -59,14 +59,7 @@ $(document).ready(function () {
     $('#but').click(newGame);
 });
 
-var audioElement = document.createElement("audio");
-audioElement.setAttribute("src", "assets/starwarsst.m4a");
 
-      // Theme Button
-
-$("but").on("click", function(){
-audioElement.play();
-});
 
 
 

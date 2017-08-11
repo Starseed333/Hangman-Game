@@ -1,39 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-	 <meta charset="UTF-8">
-	<title>Hangman Game</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-
-</head>
-
-<body>
-
-<h1>May the Word be With You!</h1>
-
-<div id="game">
-<p>TO press or NOT to press</p>
-</div>
-
-
-
-
-<form id="form" name="form" method="post" action="">
-        <input type="button" id="but" value="Start" />
-        <div id="hangman-jquery"</div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hangman Game</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>May the Word be With You!</h1>
+        <div id="game">
+            <p>TO press or NOT to press</p>
+        </div>
+        <form id="form" name="form" method="post" action="">
+            <input type="button" id="but" value="Start" />
+            <div id="hangman-jquery"</div>
             <div id="word"></div>
             <div id="alpha"></div>
-        </div> 
+        </div>
     </form>
     <div id="win"></div>
-
-
-
-
-<script src="assets/javascript/game.js"></script>
+    <div id="player">
+        <audio autoplay hidden>
+            <source src="assets/starwarsst.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <script src="assets/javascript/game.js"></script>
 </body>
 </html>
